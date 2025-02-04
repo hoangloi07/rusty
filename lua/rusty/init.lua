@@ -1,11 +1,11 @@
-" Rusty
-" https://github.com/namrabtw
-"
-" Modified version of:
-" Tomorrow Night - Full Colour and 256 Colour
-" http://chriskempson.com
-"
-" Hex colour conversion functions borrowed from the theme "Desert256""
+-- Rusty
+-- https://github.com/namrabtw
+--
+-- Modified version of:
+-- Tomorrow Night - Full Colour and 256 Colour
+-- http://chriskempson.com
+--
+-- Hex colour conversion functions borrowed from the theme "Desert256"
 
 -- Save this as lua/rusty/init.lua
 local M = {}
