@@ -32,8 +32,6 @@ local config = {
 }
 
 M = {
-	local colors = config.colors
-
 	normal = {
 		a = { fg = config.colors.background, bg = config.colors.blue, gui = "bold" },
 		b = { fg = config.colors.foreground, bg = config.colors.line },
