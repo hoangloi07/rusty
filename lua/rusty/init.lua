@@ -31,7 +31,7 @@ local config = {
 	}
 }
 
-M = {
+local lualine = {
 	normal = {
 		a = { fg = "#" .. config.colors.background, bg = "#" .. config.colors.blue, gui = "bold" },
 		b = { fg = "#" .. config.colors.foreground, bg = "#" .. config.colors.line },
@@ -63,6 +63,8 @@ M = {
 		c = { fg = "#" .. config.colors.foreground, bg = "#" .. config.colors.background },
 	},
 }
+
+M.lualine = lualine
 
 -- Setup user configuration
 function M.setup(user_config)
