@@ -15,19 +15,19 @@ local config = {
 	italic_comments = true,  -- Enable/disable italic comments
 	underline_current_line = false,  -- Enable/disable underline for current line
 	colors = {
-		foreground = "#c5c8c6",
-		background = "#1d1f21",
-		selection = "#373b41",
-		line = "#282a2e",
-		comment = "#969896",
-		red = "#cc6666",
-		orange = "#de935f",
-		yellow = "#f0c674",
-		green = "#b5bd68",
-		aqua = "#8abeb7",
-		blue = "#81a2be",
-		purple = "#b294bb",
-		window = "#4d5057",
+		foreground = "c5c8c6",
+		background = "1d1f21",
+		selection = "373b41",
+		line = "282a2e",
+		comment = "969896",
+		red = "cc6666",
+		orange = "de935f",
+		yellow = "f0c674",
+		green = "b5bd68",
+		aqua = "8abeb7",
+		blue = "81a2be",
+		purple = "b294bb",
+		window = "4d5057",
 	}
 }
 
@@ -39,22 +39,21 @@ end
 
 -- Convert hex to cterm color
 local function hex_to_cterm(hex)
-  hex = hex:gsub("#", "") -- Remove the leading '#' if present
-  local r = tonumber(hex:sub(1, 2), 16)
-  local g = tonumber(hex:sub(3, 4), 16)
-  local b = tonumber(hex:sub(5, 6), 16)
-  return math.floor((r * 36 + g * 6 + b) / 51)
+	local r = tonumber(hex:sub(1, 2), 16)
+	local g = tonumber(hex:sub(3, 4), 16)
+	local b = tonumber(hex:sub(5, 6), 16)
+	return string.format("%d", (r * 36 + g * 6 + b) / 51)
 end
 
 -- Apply highlights for various groups
 local function apply_highlight(group, fg, bg, attr)
 	local cmd = "highlight " .. group
-	if fg then cmd = cmd .. " guifg=" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
+	if fg then cmd = cmd .. " guifg=#" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
 	if bg then
 		if config.transparent and group == "Normal" then
 			cmd = cmd .. " guibg=NONE ctermbg=NONE"
 		else
-			cmd = cmd .. " guibg=" .. bg .. " ctermbg=" .. hex_to_cterm(bg)
+			cmd = cmd .. " guibg=#" .. bg .. " ctermbg=" .. hex_to_cterm(bg)
 		end
 	end
 	if attr then cmd = cmd .. " gui=" .. attr .. " cterm=" .. attr end
