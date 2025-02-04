@@ -49,8 +49,11 @@ local function apply_highlight(group, fg, bg, attr)
 	local cmd = "highlight " .. group
 	if fg then cmd = cmd .. " guifg=#" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
 	if bg then
-		cmd = cmd .. " guibg=" .. (config.transparent and "NONE" or ("#" .. bg)) 
-		cmd = cmd .. " ctermbg=" .. (config.transparent and "NONE" or hex_to_cterm(bg))
+		if group == "Normal" then
+			cmd = cmd .. " guibg=NONE ctermbg=NONE"
+		else
+			cmd = cmd .. " guibg=#" .. bg .. " ctermbg=" .. hex_to_cterm(bg)
+		end
 	end
 	if attr then cmd = cmd .. " gui=" .. attr .. " cterm=" .. attr end
 	vim.cmd(cmd)
@@ -74,17 +77,17 @@ function M.apply()
 	apply_highlight("ModeMsg", c.green, nil)
 	apply_highlight("MoreMsg", c.green, nil)
 	apply_highlight("WarningMsg", c.red, nil)
-	apply_highlight("MatchParen", nil, c.selection)
+	apply_highlight("MatchParen", c.foreground, c.selection)
 	apply_highlight("Folded", c.comment, c.background)
-	apply_highlight("FoldColumn", nil, c.background)
+	apply_highlight("FoldColumn", c.comment, c.background)
 
 	-- Custom highlights
-	apply_highlight("CursorLine", nil, config.underline_current_line and c.line or nil)
-	apply_highlight("CursorColumn", nil, nil)
+	apply_highlight("CursorLine", nil, config.underline_current_line and c.line or c.line)
+	apply_highlight("CursorColumn", nil, c.line) -- Added background color
 	apply_highlight("PMenu", c.foreground, c.selection, "none")
 	apply_highlight("PMenuSel", c.foreground, c.selection, "reverse")
-	apply_highlight("SignColumn", nil, nil)
-	apply_highlight("ColorColumn", nil, nil)
+	apply_highlight("SignColumn", c.foreground, c.background) -- Defined colors for SignColumn
+	apply_highlight("ColorColumn", c.background, c.line) -- Added background for ColorColumn
 	apply_highlight("Comment", c.comment, nil, config.italic_comments and "italic" or nil)
 	apply_highlight("Todo", c.comment, c.background)
 	apply_highlight("Identifier", c.purple, nil)
@@ -105,7 +108,7 @@ function M.apply()
 	apply_highlight("DiffAdd", c.green, diffbackground)
 	apply_highlight("DiffDelete", c.red, diffbackground)
 	apply_highlight("DiffChange", c.yellow, diffbackground)
-	apply_highlight("DiffText", diffbackground, c.orange)
+	apply_highlight("DiffText", c.orange, diffbackground)
 
 	-- ShowMarks highlights
 	apply_highlight("ShowMarksHLl", c.orange, c.background)
