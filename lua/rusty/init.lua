@@ -7,7 +7,6 @@
 --
 -- Hex colour conversion functions borrowed from the theme "Desert256"
 
--- Save this as lua/rusty/init.lua
 local M = {}
 
 local config = {
