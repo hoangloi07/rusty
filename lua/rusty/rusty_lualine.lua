@@ -16,7 +16,7 @@ local colors = {
 	window = "#4d5057",
 }
 
-M.theme = {
+M = {
 	normal = {
 		a = { fg = colors.background, bg = colors.blue, gui = "bold" },
 		b = { fg = colors.foreground, bg = colors.line },
