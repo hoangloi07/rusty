@@ -36,10 +36,6 @@ function M.setup(user_config)
 	M.apply() -- Automatically apply after setup
 end
 
-function M.apply()
-	require("rusty.rusty_lualine") -- Ensure lualine support is loaded
-end
-
 -- Convert hex to cterm color
 local function hex_to_cterm(hex)
 	local r = tonumber(hex:sub(1, 2), 16)
@@ -48,7 +44,7 @@ local function hex_to_cterm(hex)
 	return string.format("%d", (r * 36 + g * 6 + b) / 51)
 end
 
--- Apply highlights
+-- Apply highlights for various groups
 local function apply_highlight(group, fg, bg, attr)
 	local cmd = "highlight " .. group
 	if fg then cmd = cmd .. " guifg=#" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
@@ -60,13 +56,62 @@ local function apply_highlight(group, fg, bg, attr)
 	vim.cmd(cmd)
 end
 
--- Apply the color scheme
+-- Apply all the necessary highlights for Vim
 function M.apply()
 	local c = config.colors
+	
+	-- Apply standard highlights
 	apply_highlight("Normal", c.foreground, c.background)
-	apply_highlight("Comment", c.comment, nil, config.italic_comments and "italic" or nil)
-	-- Additional highlights
+	apply_highlight("LineNr", c.selection, nil)
+	apply_highlight("NonText", c.selection, nil)
+	apply_highlight("SpecialKey", c.selection, nil)
+	apply_highlight("Search", c.background, c.yellow)
+	apply_highlight("StatusLine", c.yellow, nil, "none")
+	apply_highlight("StatusLineNC", c.window, c.foreground, "reverse")
+	apply_highlight("VertSplit", c.window, c.window)
+	apply_highlight("Visual", nil, c.selection)
+	apply_highlight("Directory", c.blue, nil)
+	apply_highlight("ModeMsg", c.green, nil)
+	apply_highlight("MoreMsg", c.green, nil)
+	apply_highlight("WarningMsg", c.red, nil)
+	apply_highlight("MatchParen", nil, c.selection)
+	apply_highlight("Folded", c.comment, c.background)
+	apply_highlight("FoldColumn", nil, c.background)
+
+	-- Custom highlights
 	apply_highlight("CursorLine", nil, config.underline_current_line and c.line or nil)
+	apply_highlight("CursorColumn", nil, nil)
+	apply_highlight("PMenu", c.foreground, c.selection, "none")
+	apply_highlight("PMenuSel", c.foreground, c.selection, "reverse")
+	apply_highlight("SignColumn", nil, nil)
+	apply_highlight("ColorColumn", nil, nil)
+	apply_highlight("Comment", c.comment, nil, config.italic_comments and "italic" or nil)
+	apply_highlight("Todo", c.comment, c.background)
+	apply_highlight("Identifier", c.purple, nil)
+	apply_highlight("Statement", c.purple, nil)
+	apply_highlight("Function", c.foreground, nil)
+	apply_highlight("Constant", c.orange, nil)
+	apply_highlight("Character", c.yellow, nil)
+	apply_highlight("String", c.green, nil)
+	apply_highlight("PreProc", c.orange, nil)
+	apply_highlight("Structure", c.foreground, nil)
+	apply_highlight("Include", c.aqua, nil)
+	apply_highlight("Operator", c.foreground, nil)
+
+	-- Diff highlights
+	local diffbackground = "494e56"
+	apply_highlight("diffAdded", c.green, nil)
+	apply_highlight("diffRemoved", c.red, nil)
+	apply_highlight("DiffAdd", c.green, diffbackground)
+	apply_highlight("DiffDelete", c.red, diffbackground)
+	apply_highlight("DiffChange", c.yellow, diffbackground)
+	apply_highlight("DiffText", diffbackground, c.orange)
+
+	-- ShowMarks highlights
+	apply_highlight("ShowMarksHLl", c.orange, c.background)
+	apply_highlight("ShowMarksHLo", c.purple, c.background)
+	apply_highlight("ShowMarksHLu", c.yellow, c.background)
+	apply_highlight("ShowMarksHLm", c.aqua, c.background)
 end
 
 return M
