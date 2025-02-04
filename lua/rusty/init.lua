@@ -39,10 +39,11 @@ end
 
 -- Convert hex to cterm color
 local function hex_to_cterm(hex)
-	local r = tonumber(hex:sub(1, 2), 16)
-	local g = tonumber(hex:sub(3, 4), 16)
-	local b = tonumber(hex:sub(5, 6), 16)
-	return string.format("%d", (r * 36 + g * 6 + b) / 51)
+  hex = hex:gsub("#", "") -- Remove the leading '#' if present
+  local r = tonumber(hex:sub(1, 2), 16)
+  local g = tonumber(hex:sub(3, 4), 16)
+  local b = tonumber(hex:sub(5, 6), 16)
+  return math.floor((r * 36 + g * 6 + b) / 51)
 end
 
 -- Apply highlights for various groups
