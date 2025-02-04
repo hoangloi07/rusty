@@ -49,12 +49,12 @@ end
 -- Apply highlights for various groups
 local function apply_highlight(group, fg, bg, attr)
 	local cmd = "highlight " .. group
-	if fg then cmd = cmd .. " guifg=#" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
+	if fg then cmd = cmd .. " guifg=" .. fg .. " ctermfg=" .. hex_to_cterm(fg) end
 	if bg then
 		if config.transparent and group == "Normal" then
 			cmd = cmd .. " guibg=NONE ctermbg=NONE"
 		else
-			cmd = cmd .. " guibg=#" .. bg .. " ctermbg=" .. hex_to_cterm(bg)
+			cmd = cmd .. " guibg=" .. bg .. " ctermbg=" .. hex_to_cterm(bg)
 		end
 	end
 	if attr then cmd = cmd .. " gui=" .. attr .. " cterm=" .. attr end
