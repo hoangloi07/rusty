@@ -35,34 +35,34 @@ M = {
 	local colors = config.colors
 
 	normal = {
-		a = { fg = colors.background, bg = colors.blue, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.background, bg = config.colors.blue, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 	insert = {
-		a = { fg = colors.background, bg = colors.green, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.background, bg = config.colors.green, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 	visual = {
-		a = { fg = colors.background, bg = colors.purple, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.background, bg = config.colors.purple, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 	replace = {
-		a = { fg = colors.background, bg = colors.red, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.background, bg = config.colors.red, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 	command = {
-		a = { fg = colors.background, bg = colors.orange, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.background, bg = config.colors.orange, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 	inactive = {
-		a = { fg = colors.foreground, bg = colors.line, gui = "bold" },
-		b = { fg = colors.foreground, bg = colors.line },
-		c = { fg = colors.foreground, bg = colors.background },
+		a = { fg = config.colors.foreground, bg = config.colors.line, gui = "bold" },
+		b = { fg = config.colors.foreground, bg = config.colors.line },
+		c = { fg = config.colors.foreground, bg = config.colors.background },
 	},
 }
 
