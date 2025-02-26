@@ -4,41 +4,45 @@
 
 ## Features
 
-- Supports Treesitter & LSP
-- Vim terminal colours
+- Supports Treesitter, LSP & Lualine
+- Neovim terminal colours
 
 ## Installation
 
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-require("lazy").setup({
-  "namrabtw/rusty.nvim",
-  version = false,
-  lazy = false,
-  priority = 1000, -- make sure to load this before all the other start plugins
-})
+"armannikoyan/rusty"
 ```
 
 Using [packer.nvim](https://github.com/wbthomason/packer.nvim):
 
 ```lua
-use 'namrabtw/rusty.nvim'
-```
-
-Using [vim-plug](https://github.com/junegunn/vim-plug):
-
-```viml
-Plug 'namrabtw/rusty.nvim', { 'branch': 'main' }
+use "namrabtw/rusty.nvim"
 ```
 
 ## Usage
 
-```viml
-" In VimL
+### lazy.nvim
 
-colorscheme rusty
+```lua
+return {
+	"armannikoyan/rusty",
+	lazy = false,
+	priority = 1000,
+	opts = {
+		transparent = true,
+		italic_comments = true,
+		underline_current_line = true,
+	},
+	config = function(_, opts)
+		require("rusty").setup(opts)
+		vim.cmd("colorscheme rusty")
+	end,
+}
 ```
+
+### packer.nvim
 
 ```lua
 -- In Lua
@@ -46,4 +50,10 @@ vim.cmd([[colorscheme rusty]])
 
 -- Alternatively
 require("rusty").load()
+```
+
+## Lualine
+
+```lua
+theme = require("rusty").lualine
 ```
