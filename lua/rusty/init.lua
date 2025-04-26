@@ -94,7 +94,7 @@ function M.apply()
 	apply_highlight("Operator", c.foreground, nil)
 
 	-- Vim-specific highlights
-	apply_highlight("vimCommand", c.red, nil, nil)
+  apply_highlight("VimCommand", c.red, nil, nil)
 	apply_highlight("@namespace", c.foreground, nil, nil)
 	apply_highlight("@function", c.aqua, nil, nil)
 

@@ -2,7 +2,7 @@ local colors = require('rusty.colors').get()
 
 return {
   'nvim-lualine/lualine.nvim',
-  dependencies = { 'rusty' },
+  dependencies = { 'armannikoyan/rusty' },
   config = function()
     require('lualine').setup({
       options = {
