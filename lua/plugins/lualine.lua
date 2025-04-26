@@ -1,10 +1,9 @@
-local rusty_colors = require('rusty.colors')
+local colors = require('rusty.colors').get()
 
 return {
   'nvim-lualine/lualine.nvim',
   dependencies = { 'rusty' },
   config = function()
-    local colors = rusty_colors.get()
     require('lualine').setup({
       options = {
         theme = {
@@ -13,7 +12,6 @@ return {
             b = { fg = colors.foreground, bg = colors.line },
             c = { fg = colors.foreground, bg = colors.background },
           },
-          -- Add other mode definitions here
           insert = {
             a = { fg = colors.background, bg = colors.green, gui = "bold" },
             b = { fg = colors.foreground, bg = colors.line },
