@@ -6,4 +6,4 @@ if vim.fn.exists("syntax_on") then
 end
 vim.g.colors_name = "rusty"
 
-require("rusty").apply()
+require("rusty").setup()
