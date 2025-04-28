@@ -4,7 +4,7 @@
 local M = {}
 local colors = require('rusty.colors')
 
-M.lualine = require('lua.plugins.lualine')
+M.lualine = require('rusty.plugins.lualine')
 
 -- Default configuration
 local config = {
