@@ -7,7 +7,6 @@ return {
     require('lualine').setup({
       options = {
         theme = {
-          -- Define all mode-specific sections
           normal = {
             a = { fg = colors.background, bg = colors.blue, gui = "bold" },
             b = { fg = colors.foreground, bg = colors.line },
