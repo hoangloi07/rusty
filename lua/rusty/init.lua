@@ -8,6 +8,7 @@
 -- Hex colour conversion functions borrowed from the theme "Desert256"
 
 local M = {}
+M.lualine = require('plugins.lualine')
 local colors = require('rusty.colors')
 
 -- Default configuration
