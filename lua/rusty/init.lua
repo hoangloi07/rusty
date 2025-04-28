@@ -10,14 +10,7 @@
 local M = {}
 local colors = require('rusty.colors')
 
-local function require_relative(path)
-  local script_path = debug.getinfo(1, "S").source:sub(2)
-  local dir = vim.fn.fnamemodify(script_path, ":p:h")
-  package.path = string.format("%s;%s/../../?.lua", package.path, dir)
-end
-
-require_relative()  -- Set up paths
-M.lualine = require('plugins.lualine')
+M.lualine = require('lua.plugins.lualine')
 
 -- Default configuration
 local config = {
