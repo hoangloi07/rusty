@@ -17,7 +17,7 @@ local config = {
 	underline_current_line = false,  -- Enable/disable underline for current line
 }
 
-M.lualine = require('plugins.lualine')
+M.lualine = require('../plugins.lualine')
 
 -- Setup user configuration
 function M.setup(user_config)
