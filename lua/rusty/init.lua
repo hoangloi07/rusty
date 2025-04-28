@@ -17,10 +17,7 @@ local config = {
 	underline_current_line = false,  -- Enable/disable underline for current line
 }
 
-local plugin_root = vim.fn.stdpath("config") .. "/../plugins"
-vim.opt.rtp:prepend(plugin_root)
-
-M.lualine = require('lualine')
+M.lualine = require('plugins.lualine')
 
 -- Setup user configuration
 function M.setup(user_config)
