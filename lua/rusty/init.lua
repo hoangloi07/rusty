@@ -102,13 +102,12 @@ function M.apply()
 	apply_highlight("@lsp.type.enumMember", c.foreground, nil, nil)
 
 	-- Diff highlights
-	local diffbackground = "#494e56"
 	apply_highlight("diffAdded", c.green, nil)
 	apply_highlight("diffRemoved", c.red, nil)
-	apply_highlight("DiffAdd", c.green, diffbackground)
-	apply_highlight("DiffDelete", c.red, diffbackground)
-	apply_highlight("DiffChange", c.yellow, diffbackground)
-	apply_highlight("DiffText", diffbackground, c.orange)
+	apply_highlight("DiffAdd", c.green, c.diff_background)
+	apply_highlight("DiffDelete", c.red, c.diff_background)
+	apply_highlight("DiffChange", c.yellow, c.diff_background)
+	apply_highlight("DiffText", c.diff_background, c.orange)
 
 	-- ShowMarks highlights
 	apply_highlight("ShowMarksHLl", c.orange, c.background, nil)
