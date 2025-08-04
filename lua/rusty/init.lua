@@ -114,6 +114,16 @@ function M.apply()
 	apply_highlight("ShowMarksHLo", c.purple, c.background, nil)
 	apply_highlight("ShowMarksHLu", c.yellow, c.background, nil)
 	apply_highlight("ShowMarksHLm", c.aqua, c.background, nil)
+
+  vim.api.nvim_exec([[
+    augroup RustyColors
+      autocmd!
+      autocmd ColorScheme * lua require("rusty").apply()
+    augroup END
+  ]], false)
+
+  vim.cmd("doautocmd ColorScheme")  -- Trigger immediate apply
+  vim.g.colors_name = "rusty"  -- Mark as active colorscheme
 end
 
 return M
