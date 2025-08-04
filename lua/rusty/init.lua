@@ -15,10 +15,25 @@ local config = {
 
 -- Setup user configuration
 function M.setup(user_config)
-  user_config = user_config or {}  -- Add this line to handle nil case
+  user_config = user_config or {}
   config = vim.tbl_deep_extend("force", config, user_config)
-  colors.setup((user_config or {}).colors or {})  -- Safe access
+  colors.setup(user_config.colors or {})
+  
+  -- Apply immediately
   M.apply()
+  
+  -- Set up protection (only once)
+  if not M._protected then
+    M._protected = true
+    vim.api.nvim_create_autocmd("ColorSchemePre", {
+      pattern = "*",
+      callback = function()
+        if vim.g.colors_name == "rusty" then
+          M.apply()
+        end
+      end
+    })
+  end
 end
 
 -- Convert hex to cterm color
@@ -46,7 +61,7 @@ function M.apply()
   local c = colors.get()
 
 	-- Basic highlights
-	apply_highlight("Normal", c.foreground, config.transparent and nil or c.background)
+	apply_highlight("Normal", c.foreground, config.transparent and "NONE" or c.background)
 	apply_highlight("NormalFloat", c.foreground, c.background)
 	apply_highlight("LineNr", c.selection, nil)
 	apply_highlight("NonText", c.selection, nil)
@@ -114,6 +129,8 @@ function M.apply()
 	apply_highlight("ShowMarksHLo", c.purple, c.background, nil)
 	apply_highlight("ShowMarksHLu", c.yellow, c.background, nil)
 	apply_highlight("ShowMarksHLm", c.aqua, c.background, nil)
+
+  vim.g.colors_name = "rusty"
 end
 
 return M
