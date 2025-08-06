@@ -6,7 +6,7 @@ return function(config)
   return {
     normal = {
       a = { fg = colors.background, bg = colors.blue, gui = "bold" },
-      b = { fg = colors.foreground, bg = colors.line },
+      b = { fg = colors.foreground, bg = colors.background },
       c = { fg = colors.foreground, bg = bg_color },
     },
     insert = {
