@@ -4,8 +4,6 @@
 local M = {}
 local colors = require('rusty.colors')
 
-M.lualine = require('rusty.plugins.lualine')
-
 -- Default configuration
 local config = {
 	transparent = false,  -- Enable/disable transparency
@@ -18,6 +16,8 @@ function M.setup(user_config)
   user_config = user_config or {}
   config = vim.tbl_deep_extend("force", config, user_config)
   colors.setup(user_config.colors or {})
+
+   M.lualine = require('rusty.plugins.lualine')(config)
   
   -- Apply immediately
   M.apply()
@@ -68,7 +68,7 @@ function M.apply()
 	apply_highlight("SpecialKey", c.selection, nil)
 	apply_highlight("Search", c.background, c.yellow)
 	apply_highlight("TabLine", c.foreground, c.background, { reverse = true })
-	apply_highlight("StatusLine", c.yellow, c.background, nil)
+	apply_highlight("StatusLine", c.yellow, config.transparent and "NONE" or c.background, nil)
 	apply_highlight("StatusLineNC", c.window, c.foreground, { reverse = true })
 	apply_highlight("VertSplit", c.window, c.window, nil)
 	apply_highlight("Visual", nil, c.selection)
