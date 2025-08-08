@@ -1,4 +1,4 @@
-###  Forked from armannikoyan/rusty
+* Forked from armannikoyan/rusty
 # rusty.nvim
 
 ![rusty](./rusty.png)
