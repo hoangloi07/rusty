@@ -1,7 +1,7 @@
-local colors = require('rusty.colors').get()
+local colors = require("rusty.colors").get()
 
 return function(config)
-  local bg_color = config.transparent and 'NONE' or colors.background
+  local bg_color = config.transparent and "NONE" or colors.background
 
   return {
     normal = {

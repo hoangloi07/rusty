@@ -1,3 +1,4 @@
+###  Forked from armannikoyan/rusty
 # rusty.nvim
 
 ![rusty](./rusty.png)
@@ -12,13 +13,13 @@
 Using [lazy.nvim](https://github.com/folke/lazy.nvim):
 
 ```lua
-"armannikoyan/rusty"
+"hoangloi07/rusty"
 ```
 
 Using [packer.nvim](https://github.com/wbthomason/packer.nvim):
 
 ```lua
-use "namrabtw/rusty.nvim"
+use "hoangloi07/rusty.nvim"
 ```
 
 ## Usage
@@ -27,7 +28,7 @@ use "namrabtw/rusty.nvim"
 
 ```lua
 return {
-	"armannikoyan/rusty",
+	"hoangloi07/rusty",
 	lazy = false,
 	priority = 1000,
 	opts = {
